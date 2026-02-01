@@ -1,32 +1,57 @@
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
-const card1 = document.getElementById('card1');
-const card2 = document.getElementById('card2');
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-yesBtn.addEventListener('click', () => {
-    card1.classList.add('hidden');
-    card2.classList.remove('hidden');
-});
+body {
+    margin: 0;
+    height: 100vh;
+    background: #ff69b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-// desktop: runs away when mouse gets close
-noBtn.addEventListener('mouseenter', moveNoButton);
+#container, #popup {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
-// mobile: runs away when finger touches it
-noBtn.addEventListener('touchstart', moveNoButton);
+#gifContainer img,
+#popup img {
+    width: 180px;
+    margin: 15px 0;
+}
 
-// extra safety: even if she somehow clicks
-noBtn.addEventListener('click', moveNoButton);
+#buttons {
+    position: relative;
+    height: 60px;
+    margin-top: 20px;
+}
 
-function moveNoButton() {
-    const cardRect = card1.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    const maxX = cardRect.width - btnRect.width - 20;
-    const maxY = cardRect.height - btnRect.height - 20;
+#yesButton {
+    background: #ff1493;
+    color: white;
+}
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+#noButton {
+    background: #ddd;
+    position: absolute;
+}
 
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+.hidden {
+    display: none;
 }
