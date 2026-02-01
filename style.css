@@ -6,31 +6,37 @@ const popup2 = document.getElementById("popup2");
 let noClickCount = 0;
 const maxNoMoves = 11;
 
-// YES button -> show second pop-up
 yesBtn.addEventListener("click", () => {
     popup1.classList.add("hidden");
     popup2.classList.remove("hidden");
 });
 
-// NO button -> move randomly up to 11 times
 function moveNoButton() {
-    if (noClickCount >= maxNoMoves) return;
+    if (noClickCount < maxNoMoves) {
+        // Change to 'fixed' so it can move anywhere on the screen
+        noBtn.style.position = "fixed"; 
 
-    const box = popup1.getBoundingClientRect();
-    const btn = noBtn.getBoundingClientRect();
+        // Randomly pick a spot anywhere on the phone screen
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
 
-    const maxX = box.width - btn.width - 20;
-    const maxY = box.height - btn.height - 20;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
 
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top = Math.random() * maxY + "px";
+        noBtn.style.left = newX + "px";
+        noBtn.style.top = newY + "px";
 
-    noClickCount++;
+        noClickCount++;
+    } else {
+        // After 11 times, it disappears
+        noBtn.style.display = "none";
+    }
 }
 
-// Move NO button on hover (desktop)
+// Triggers for Desktop and Mobile
 noBtn.addEventListener("mouseenter", moveNoButton);
-// Move NO button on touch (mobile)
-noBtn.addEventListener("touchstart", moveNoButton);
-// Extra protection if clicked
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // Prevents clicking the button on touch
+    moveNoButton();
+});
 noBtn.addEventListener("click", moveNoButton);
