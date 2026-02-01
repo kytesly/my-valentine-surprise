@@ -1,59 +1,29 @@
-* {
-    box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+const container = document.getElementById("container");
+const popup = document.getElementById("popup");
+
+yesButton.addEventListener("click", () => {
+    container.classList.add("hidden");
+    popup.classList.remove("hidden");
+});
+
+function moveNoButton() {
+    const box = container.getBoundingClientRect();
+    const btn = noButton.getBoundingClientRect();
+
+    const maxX = box.width - btn.width - 20;
+    const maxY = box.height - btn.height - 20;
+
+    noButton.style.left = Math.random() * maxX + "px";
+    noButton.style.top = Math.random() * maxY + "px";
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    background: #ff69b4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+// laptop
+noButton.addEventListener("mouseenter", moveNoButton);
 
-.card {
-    background: white;
-    width: 90%;
-    max-width: 420px;
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
+// phone
+noButton.addEventListener("touchstart", moveNoButton);
 
-.popup-image {
-    width: 150px;
-    max-width: 80%;
-    margin-bottom: 15px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    position: relative;
-}
-
-button {
-    padding: 12px 22px;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#yesBtn {
-    background: #ff1493;
-    color: white;
-}
-
-#noBtn {
-    background: #ddd;
-    color: #333;
-    position: absolute;
-}
-
-.hidden {
-    display: none;
-}
+// backup
+noButton.addEventListener("click", moveNoButton);
