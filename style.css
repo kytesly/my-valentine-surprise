@@ -1,36 +1,59 @@
-const noButton = document.getElementById('noButton');
-const yesButton = document.getElementById('yesButton');
-const question = document.getElementById('question');
-const mainGif = document.getElementById('mainGif');
-
-let moveCount = 0;
-
-function moveButton() {
-    if (moveCount < 11) {
-        noButton.style.position = 'fixed';
-        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-        
-        noButton.style.left = `${x}px`;
-        noButton.style.top = `${y}px`;
-        moveCount++;
-    } else {
-        noButton.style.display = 'none'; // Disappears after 11 tries
-    }
+* {
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
 }
 
-noButton.addEventListener('mouseover', moveButton);
-noButton.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    moveButton();
-});
+body {
+    margin: 0;
+    height: 100vh;
+    background: #ff69b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-yesButton.addEventListener('click', () => {
-    question.innerHTML = "Welcome, welcome, welcome. Welcome, welcome, my beloved and amazing, wonderful girlfriend. Thanks for clicking yes. Love you too.";
-    
-    // The "Yabu" style celebratory GIF
-    mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/6oMKugqovQ2pQV5u4z/giphy.gif";
-    
-    noButton.style.display = 'none';
-    yesButton.style.display = 'none';
-});
+.card {
+    background: white;
+    width: 90%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.popup-image {
+    width: 150px;
+    max-width: 80%;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: #ff1493;
+    color: white;
+}
+
+#noBtn {
+    background: #ddd;
+    color: #333;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}

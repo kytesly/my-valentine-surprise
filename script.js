@@ -1,57 +1,32 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #ffe6e6;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-}
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const card1 = document.getElementById('card1');
+const card2 = document.getElementById('card2');
 
-.container {
-    text-align: center;
-    width: 90vw;
-}
+yesBtn.addEventListener('click', () => {
+    card1.classList.add('hidden');
+    card2.classList.remove('hidden');
+});
 
-#gifContainer img {
-    width: 100%;
-    max-width: 400px; /* Big image box */
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+// desktop: runs away when mouse gets close
+noBtn.addEventListener('mouseenter', moveNoButton);
 
-h1 {
-    color: #d63384;
-    font-size: 2rem; /* Big text */
-    margin: 25px 0;
-}
+// mobile: runs away when finger touches it
+noBtn.addEventListener('touchstart', moveNoButton);
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    height: 80px;
-    position: relative;
-}
+// extra safety: even if she somehow clicks
+noBtn.addEventListener('click', moveNoButton);
 
-button {
-    padding: 20px 45px; /* Large buttons */
-    font-size: 1.5rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
+function moveNoButton() {
+    const cardRect = card1.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
 
-#yesButton {
-    background-color: #ff4d6d; /* Bright Pink */
-    color: white;
-}
+    const maxX = cardRect.width - btnRect.width - 20;
+    const maxY = cardRect.height - btnRect.height - 20;
 
-#noButton {
-    background-color: #888888; /* Grey */
-    color: white;
-    transition: 0.1s;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 }
