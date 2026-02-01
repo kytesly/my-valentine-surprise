@@ -1,20 +1,59 @@
-const yesButton = document.getElementById('yesButton');
-const noButton = document.getElementById('noButton');
-const container = document.getElementById('container');
-const popup = document.getElementById('popup');
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe6e6;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
 
-// Function to move the "No" button
-noButton.addEventListener('mouseover', () => {
-    const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-    
-    noButton.style.position = 'absolute';
-    noButton.style.left = `${x}px`;
-    noButton.style.top = `${y}px`;
-});
+.container {
+    text-align: center;
+    width: 95vw; /* Almost full width of your phone */
+}
 
-// Function to handle the "Yes" click
-yesButton.addEventListener('click', () => {
-    container.style.display = 'none'; // Hide the original question
-    popup.style.display = 'block';   // Show the cute success message
-});
+#gifContainer {
+    width: 100%;
+    max-width: 500px; /* Makes the box big */
+    margin: 0 auto;
+}
+
+#gifContainer img {
+    width: 100%; /* Makes the image fill the big box */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #d63384;
+    font-size: 2rem; /* Big text */
+    margin: 20px 10px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}
+
+#yesButton {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#noButton {
+    background-color: #808080;
+    color: white;
+    position: absolute; /* Needed for the jumping effect */
+}
