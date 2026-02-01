@@ -1,44 +1,57 @@
-const noButton = document.getElementById('noButton');
-const yesButton = document.getElementById('yesButton');
-const h1 = document.querySelector('h1');
-const gif = document.querySelector('#gifContainer img');
-
-let moveCount = 0; // Tracks how many times it moved
-
-function moveButton() {
-    if (moveCount < 11) {
-        // Force the button to move
-        noButton.style.position = 'fixed'; 
-        
-        // Calculate random position within the screen
-        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-        
-        noButton.style.left = `${x}px`;
-        noButton.style.top = `${y}px`;
-        
-        moveCount++; // Increase the count by 1
-    } else {
-        // After 11 times, the button disappears to force a 'Yes'
-        noButton.style.display = 'none';
-    }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe6e6;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
 }
 
-// Triggers for both Desktop and Mobile
-noButton.addEventListener('mouseover', moveButton);
-noButton.addEventListener('touchstart', (e) => {
-    e.preventDefault(); 
-    moveButton();
-});
+.container {
+    text-align: center;
+    width: 90vw;
+}
 
-yesButton.addEventListener('click', () => {
-    // Your custom message
-    h1.innerHTML = "Welcome, welcome, welcome. Welcome, welcome, my beloved and amazing, wonderful girlfriend. Thanks for clicking yes. Love you too.";
-    
-    // Yabu man / Happy celebration GIF
-    gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/6oMKugqovQ2pQV5u4z/giphy.gif"; 
-    
-    // Clean up screen
-    noButton.style.display = 'none';
-    yesButton.style.display = 'none';
-});
+#gifContainer img {
+    width: 100%;
+    max-width: 400px; /* Big image box */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #d63384;
+    font-size: 2rem; /* Big text */
+    margin: 25px 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    height: 80px;
+    position: relative;
+}
+
+button {
+    padding: 20px 45px; /* Large buttons */
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#yesButton {
+    background-color: #ff4d6d; /* Bright Pink */
+    color: white;
+}
+
+#noButton {
+    background-color: #888888; /* Grey */
+    color: white;
+    transition: 0.1s;
+}
