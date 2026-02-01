@@ -7,7 +7,7 @@ let moveCount = 0;
 
 function moveNoButton() {
     if (moveCount < 11) {
-        // Random position logic
+        // Move button to a random spot
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
         
@@ -17,18 +17,19 @@ function moveNoButton() {
         
         moveCount++;
     } else {
-        noBtn.style.display = 'none'; // Disappear after 11 tries
+        // Disappear after 11 tries
+        noBtn.style.display = 'none';
     }
 }
 
-// Move on hover (desktop) or touch (mobile)
+// Works for both computer and mobile touch
 noBtn.addEventListener('mouseover', moveNoButton);
 noBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // Prevents clicking it on mobile
+    e.preventDefault(); // Important: stops the click from happening
     moveNoButton();
 });
 
-// Success action
+// Show the second page
 yesBtn.addEventListener('click', () => {
     mainPage.classList.add('hidden');
     successPage.classList.remove('hidden');
