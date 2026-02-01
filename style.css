@@ -11,29 +11,36 @@ body {
 
 .container {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 85%;
+    width: 80%;
     max-width: 400px;
 }
 
 .main-gif {
-    width: 200px;
+    width: 150px; /* Adjusted size for mobile */
     height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #333;
 }
 
 .buttons {
-    margin-top: 20px;
-    position: relative;
-    height: 60px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 12px 25px;
+    font-size: 1rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -45,9 +52,9 @@ button {
 #noBtn {
     background-color: #9e9e9e;
     color: white;
-    position: absolute; /* Allows movement */
 }
 
+/* This keeps the success page invisible until Yes is clicked */
 .hidden {
     display: none !important;
 }
