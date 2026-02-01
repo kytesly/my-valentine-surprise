@@ -20,11 +20,13 @@ body {
     width: 90%;
     max-width: 420px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative; /* important for NO button to move inside */
 }
 
 #gifContainer img,
 #popup img {
     width: 180px;
+    max-width: 100%;
     margin: 15px 0;
 }
 
