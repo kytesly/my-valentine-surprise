@@ -3,11 +3,13 @@ const noButton = document.getElementById("noButton");
 const container = document.getElementById("container");
 const popup = document.getElementById("popup");
 
+// YES button shows popup
 yesButton.addEventListener("click", () => {
     container.classList.add("hidden");
     popup.classList.remove("hidden");
 });
 
+// NO button runs away randomly
 function moveNoButton() {
     const box = container.getBoundingClientRect();
     const btn = noButton.getBoundingClientRect();
@@ -19,11 +21,9 @@ function moveNoButton() {
     noButton.style.top = Math.random() * maxY + "px";
 }
 
-// laptop
+// Trigger move on desktop
 noButton.addEventListener("mouseenter", moveNoButton);
-
-// phone
+// Trigger move on mobile
 noButton.addEventListener("touchstart", moveNoButton);
-
-// backup
+// Extra safety in case clicked
 noButton.addEventListener("click", moveNoButton);
