@@ -1,59 +1,44 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #ffe6e6;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
+const noButton = document.getElementById('noButton');
+const yesButton = document.getElementById('yesButton');
+const h1 = document.querySelector('h1');
+const gif = document.querySelector('#gifContainer img');
+
+let moveCount = 0; // Tracks how many times it moved
+
+function moveButton() {
+    if (moveCount < 11) {
+        // Force the button to move
+        noButton.style.position = 'fixed'; 
+        
+        // Calculate random position within the screen
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+        
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+        
+        moveCount++; // Increase the count by 1
+    } else {
+        // After 11 times, the button disappears to force a 'Yes'
+        noButton.style.display = 'none';
+    }
 }
 
-.container {
-    text-align: center;
-    width: 95vw; /* Almost full width of your phone */
-}
+// Triggers for both Desktop and Mobile
+noButton.addEventListener('mouseover', moveButton);
+noButton.addEventListener('touchstart', (e) => {
+    e.preventDefault(); 
+    moveButton();
+});
 
-#gifContainer {
-    width: 100%;
-    max-width: 500px; /* Makes the box big */
-    margin: 0 auto;
-}
-
-#gifContainer img {
-    width: 100%; /* Makes the image fill the big box */
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-h1 {
-    color: #d63384;
-    font-size: 2rem; /* Big text */
-    margin: 20px 10px;
-}
-
-.buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-button {
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-}
-
-#yesButton {
-    background-color: #ff4d6d;
-    color: white;
-}
-
-#noButton {
-    background-color: #808080;
-    color: white;
-    position: absolute; /* Needed for the jumping effect */
-}
+yesButton.addEventListener('click', () => {
+    // Your custom message
+    h1.innerHTML = "Welcome, welcome, welcome. Welcome, welcome, my beloved and amazing, wonderful girlfriend. Thanks for clicking yes. Love you too.";
+    
+    // Yabu man / Happy celebration GIF
+    gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/6oMKugqovQ2pQV5u4z/giphy.gif"; 
+    
+    // Clean up screen
+    noButton.style.display = 'none';
+    yesButton.style.display = 'none';
+});
