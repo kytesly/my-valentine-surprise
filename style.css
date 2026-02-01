@@ -1,18 +1,36 @@
-#gifContainer {
-    width: 90vw; /* Fills the width of the phone */
-    max-width: 500px;
-    margin: 0 auto;
+const noButton = document.getElementById('noButton');
+const yesButton = document.getElementById('yesButton');
+const question = document.getElementById('question');
+const mainGif = document.getElementById('mainGif');
+
+let moveCount = 0;
+
+function moveButton() {
+    if (moveCount < 11) {
+        noButton.style.position = 'fixed';
+        const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+        
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+        moveCount++;
+    } else {
+        noButton.style.display = 'none'; // Disappears after 11 tries
+    }
 }
 
-#gifContainer img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-}
+noButton.addEventListener('mouseover', moveButton);
+noButton.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    moveButton();
+});
 
-#noButton {
-    background-color: #808080;
-    color: white;
-    transition: all 0.2s ease; /* Makes the 11 jumps look smooth and fast */
-    z-index: 999; /* Ensures it stays on top of everything */
-}
+yesButton.addEventListener('click', () => {
+    question.innerHTML = "Welcome, welcome, welcome. Welcome, welcome, my beloved and amazing, wonderful girlfriend. Thanks for clicking yes. Love you too.";
+    
+    // The "Yabu" style celebratory GIF
+    mainGif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/6oMKugqovQ2pQV5u4z/giphy.gif";
+    
+    noButton.style.display = 'none';
+    yesButton.style.display = 'none';
+});
