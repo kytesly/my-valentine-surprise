@@ -7,29 +7,30 @@ let moveCount = 0;
 
 function moveNoButton() {
     if (moveCount < 11) {
-        // Move button to a random spot
+        // Calculate random position on the screen
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
         
+        // Apply position
         noBtn.style.position = 'fixed';
         noBtn.style.left = x + 'px';
         noBtn.style.top = y + 'px';
         
         moveCount++;
     } else {
-        // Disappear after 11 tries
+        // Hide button after 11 tries
         noBtn.style.display = 'none';
     }
 }
 
-// Works for both computer and mobile touch
+// Mouse for laptops, Touch for mobile
 noBtn.addEventListener('mouseover', moveNoButton);
 noBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // Important: stops the click from happening
+    e.preventDefault(); 
     moveNoButton();
 });
 
-// Show the second page
+// Switch screens
 yesBtn.addEventListener('click', () => {
     mainPage.classList.add('hidden');
     successPage.classList.remove('hidden');
