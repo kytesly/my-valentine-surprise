@@ -1,53 +1,35 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #ffdeeb;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
+const yesBtn = document.querySelector('#yesBtn');
+const noBtn = document.querySelector('#noBtn');
+const mainPage = document.querySelector('#mainPage');
+const successPage = document.querySelector('#successPage');
+
+let moveCount = 0;
+
+function moveNoButton() {
+    if (moveCount < 11) {
+        // Random position logic
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+        
+        moveCount++;
+    } else {
+        noBtn.style.display = 'none'; // Disappear after 11 tries
+    }
 }
 
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 85%;
-    max-width: 400px;
-}
+// Move on hover (desktop) or touch (mobile)
+noBtn.addEventListener('mouseover', moveNoButton);
+noBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Prevents clicking it on mobile
+    moveNoButton();
+});
 
-.main-gif {
-    width: 200px;
-    height: auto;
-}
-
-.buttons {
-    margin-top: 20px;
-    position: relative;
-    height: 60px;
-}
-
-button {
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-#yesBtn {
-    background-color: #f06292;
-    color: white;
-}
-
-#noBtn {
-    background-color: #9e9e9e;
-    color: white;
-    position: absolute; /* Allows movement */
-}
-
-.hidden {
-    display: none !important;
-}
+// Success action
+yesBtn.addEventListener('click', () => {
+    mainPage.classList.add('hidden');
+    successPage.classList.remove('hidden');
+});
