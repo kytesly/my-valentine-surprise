@@ -6,41 +6,53 @@
 body {
     margin: 0;
     height: 100vh;
-    background: #ff69b4;
+    background: #ffb6c1; /* Beautiful light pink */
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Stops screen scrolling */
 }
 
 .popup {
     background: white;
-    padding: 25px;
-    border-radius: 20px;
+    padding: 30px;
+    border-radius: 25px;
     text-align: center;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 95vw; /* Almost full phone width */
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     position: relative;
+    z-index: 5;
 }
 
 .gif-container img {
-    width: 180px;
-    max-width: 100%;
+    width: 100%; /* Makes the image BIG to fill the container */
+    max-height: 350px;
+    border-radius: 15px;
     margin: 15px 0;
 }
 
+h1 {
+    font-size: 1.6rem;
+    color: #d63384;
+}
+
 .buttons {
-    position: relative;
-    height: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     margin-top: 20px;
+    min-height: 80px;
 }
 
 button {
-    padding: 12px 22px;
+    padding: 18px 35px;
     border: none;
-    border-radius: 30px;
-    font-size: 16px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 #yesBtn {
@@ -49,10 +61,12 @@ button {
 }
 
 #noBtn {
-    background: #ddd;
-    position: absolute;
+    background: #888;
+    color: white;
+    /* transition makes the jump look smooth */
+    transition: all 0.2s ease; 
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
