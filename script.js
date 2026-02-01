@@ -1,72 +1,61 @@
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    margin: 0;
-    height: 100vh;
-    background: #ffb6c1; /* Beautiful light pink */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Stops screen scrolling */
+    height: 100vh;
+    margin: 0;
+    background-color: #ffebee;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden; /* Prevents scrollbars when button moves */
 }
 
-.popup {
+.container {
     background: white;
     padding: 30px;
-    border-radius: 25px;
-    text-align: center;
-    width: 95vw; /* Almost full phone width */
-    max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 90%;
     position: relative;
-    z-index: 5;
 }
 
 .gif-container img {
-    width: 100%; /* Makes the image BIG to fill the container */
-    max-height: 350px;
-    border-radius: 15px;
-    margin: 15px 0;
+    width: 100%;
+    border-radius: 10px;
 }
 
 h1 {
-    font-size: 1.6rem;
-    color: #d63384;
+    color: #d32f2f;
+    font-size: 1.4rem;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-around;
     margin-top: 20px;
-    min-height: 80px;
 }
 
 button {
-    padding: 18px 35px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
     border: none;
-    border-radius: 20px;
-    font-size: 1.3rem;
-    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 #yesBtn {
-    background: #ff1493;
+    background-color: #4caf50;
     color: white;
 }
 
 #noBtn {
-    background: #888;
+    background-color: #f44336;
     color: white;
-    /* transition makes the jump look smooth */
-    transition: all 0.2s ease; 
+    position: absolute; /* Needed for it to jump around */
+    transition: 0.1s;
 }
 
 .hidden {
-    display: none !important;
+    display: none;
 }
