@@ -12,7 +12,7 @@ body {
     align-items: center;
 }
 
-#container, #popup {
+.popup {
     background: white;
     padding: 25px;
     border-radius: 20px;
@@ -20,17 +20,16 @@ body {
     width: 90%;
     max-width: 420px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    position: relative; /* important for NO button to move inside */
+    position: relative;
 }
 
-#gifContainer img,
-#popup img {
+.gif-container img {
     width: 180px;
     max-width: 100%;
     margin: 15px 0;
 }
 
-#buttons {
+.buttons {
     position: relative;
     height: 60px;
     margin-top: 20px;
@@ -44,12 +43,12 @@ button {
     cursor: pointer;
 }
 
-#yesButton {
+#yesBtn {
     background: #ff1493;
     color: white;
 }
 
-#noButton {
+#noBtn {
     background: #ddd;
     position: absolute;
 }
