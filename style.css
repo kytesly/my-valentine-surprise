@@ -1,29 +1,36 @@
-const yesButton = document.getElementById("yesButton");
-const noButton = document.getElementById("noButton");
-const container = document.getElementById("container");
-const popup = document.getElementById("popup");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const popup1 = document.getElementById("popup1");
+const popup2 = document.getElementById("popup2");
 
-// YES button shows popup
-yesButton.addEventListener("click", () => {
-    container.classList.add("hidden");
-    popup.classList.remove("hidden");
+let noClickCount = 0;
+const maxNoMoves = 11;
+
+// YES button -> show second pop-up
+yesBtn.addEventListener("click", () => {
+    popup1.classList.add("hidden");
+    popup2.classList.remove("hidden");
 });
 
-// NO button runs away randomly
+// NO button -> move randomly up to 11 times
 function moveNoButton() {
-    const box = container.getBoundingClientRect();
-    const btn = noButton.getBoundingClientRect();
+    if (noClickCount >= maxNoMoves) return;
+
+    const box = popup1.getBoundingClientRect();
+    const btn = noBtn.getBoundingClientRect();
 
     const maxX = box.width - btn.width - 20;
     const maxY = box.height - btn.height - 20;
 
-    noButton.style.left = Math.random() * maxX + "px";
-    noButton.style.top = Math.random() * maxY + "px";
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+
+    noClickCount++;
 }
 
-// Trigger move on desktop
-noButton.addEventListener("mouseenter", moveNoButton);
-// Trigger move on mobile
-noButton.addEventListener("touchstart", moveNoButton);
-// Extra safety in case clicked
-noButton.addEventListener("click", moveNoButton);
+// Move NO button on hover (desktop)
+noBtn.addEventListener("mouseenter", moveNoButton);
+// Move NO button on touch (mobile)
+noBtn.addEventListener("touchstart", moveNoButton);
+// Extra protection if clicked
+noBtn.addEventListener("click", moveNoButton);
