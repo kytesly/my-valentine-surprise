@@ -1,12 +1,20 @@
-const noButton = document.getElementById('no-button');
+const yesButton = document.getElementById('yesButton');
+const noButton = document.getElementById('noButton');
+const container = document.getElementById('container');
+const popup = document.getElementById('popup');
 
-function moveButton() {
-    const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
-    const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+// Function to move the "No" button
+noButton.addEventListener('mouseover', () => {
+    const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+    
     noButton.style.position = 'absolute';
-    noButton.style.left = randomX + 'px';
-    noButton.style.top = randomY + 'px';
-}
+    noButton.style.left = `${x}px`;
+    noButton.style.top = `${y}px`;
+});
 
-noButton.addEventListener('mouseover', moveButton);
-noButton.addEventListener('touchstart', moveButton);
+// Function to handle the "Yes" click
+yesButton.addEventListener('click', () => {
+    container.style.display = 'none'; // Hide the original question
+    popup.style.display = 'block';   // Show the cute success message
+});
